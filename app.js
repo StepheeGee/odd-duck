@@ -1,4 +1,4 @@
-// app.js
+'use strict';
 
 class Product {
   constructor(name, fileName) {
@@ -25,23 +25,34 @@ class App {
     this.state = {
       clickSoFar: 0,
       clicksAllowed: 25,
+      currentRound: 0,
     };
     this.productList = new ProductList();
-    this.displayedProducts = []; // Array to hold the currently displayed products
+    this.displayedProducts = [];
+    this.productDisplayClickHandler = this.productDisplayClickHandler.bind(this);
+
+    const viewResultsButton = document.getElementById('viewResultsButton');
+    viewResultsButton.style.display = 'none';
+    viewResultsButton.addEventListener('click', this.displayResults.bind(this));
   }
 
-  // Function to generate and display three random and unique products
   displayRandomProducts() {
-    // Check if you have enough products left to display three unique products
     if (this.productList.products.length < 3) {
-      console.log('Not enough products to display.');
+      alert('Not enough products to display.');
       return;
     }
 
-    // Clear the currently displayed products
+    if (this.state.currentRound >= this.state.clicksAllowed) {
+      alert('Voting session ended.');
+      const productDisplay = document.getElementById('productDisplay');
+      productDisplay.removeEventListener('click', this.productDisplayClickHandler);
+
+      const viewResultsButton = document.getElementById('viewResultsButton');
+      viewResultsButton.style.display = 'block';
+    }
+
     this.displayedProducts = [];
 
-    // Generate three random and unique product indices
     const randomIndices = [];
     while (randomIndices.length < 3) {
       const randomIndex = Math.floor(Math.random() * this.productList.products.length);
@@ -50,12 +61,10 @@ class App {
       }
     }
 
-    // Select the products using the generated indices
     for (const index of randomIndices) {
       this.displayedProducts.push(this.productList.products[index]);
     }
 
-    // Display the selected products in the HTML section
     const productDisplay = document.getElementById('productDisplay');
     productDisplay.innerHTML = '';
     for (const product of this.displayedProducts) {
@@ -65,30 +74,49 @@ class App {
       productDisplay.appendChild(productImage);
     }
 
-    // Increment "timesShown" for the displayed products
     for (const product of this.displayedProducts) {
       product.timesShown++;
     }
   }
 
-  // Method to attach event listener for clicks on displayed products
   attachProductClickListeners() {
     const productDisplay = document.getElementById('productDisplay');
-    productDisplay.addEventListener('click', function(event) {
+    productDisplay.addEventListener('click', this.productDisplayClickHandler);
+  }
+
+  productDisplayClickHandler(event) {
+    if (this.state.currentRound < this.state.clicksAllowed) {
       if (event.target.tagName === 'IMG') {
+        this.state.currentRound++;
         const productName = event.target.alt;
-        const clickedProduct = this.displayedProducts.find(
-          (product) => product.name === productName
-        );
+        const clickedProduct = this.displayedProducts.find(function (product) {
+          return product.name === productName;
+        });
         if (clickedProduct) {
           clickedProduct.timesClicked++;
-        } 
+        }
+        this.displayRandomProducts();
       }
-    }.bind(this));
+    } else {
+      console.log('Voting session ended.');
+      const productDisplay = document.getElementById('productDisplay');
+      productDisplay.removeEventListener('click', this.productDisplayClickHandler);
+      const viewResultsButton = document.getElementById('viewResultsButton');
+      viewResultsButton.style.display = 'block';
+    }
   }
-  
-}
 
+  displayResults() {
+    const resultsContainer = document.getElementById('resultsContainer');
+    resultsContainer.innerHTML = '';
+
+    for (const product of this.productList.products) {
+      const result = document.createElement('p');
+      result.textContent = `${product.name} had ${product.timesClicked} votes, and was seen ${product.timesShown} times.`;
+      resultsContainer.appendChild(result);
+    }
+  }
+}
 
 const app = new App();
 
@@ -107,12 +135,11 @@ app.productList.addProduct("pen", "img/pen.jpg");
 app.productList.addProduct("pet-sweep", "img/pet-sweep.jpg");
 app.productList.addProduct("scissors", "img/scissors.jpg");
 app.productList.addProduct("shark", "img/shark.jpg");
-app.productList.addProduct("sweep", "img/sweep.jpg");
+app.productList.addProduct("sweep", "img/sweep.png");
 app.productList.addProduct("tauntaun", "img/tauntaun.jpg");
 app.productList.addProduct("unicorn", "img/unicorn.jpg");
 app.productList.addProduct("water-can", "img/water-can.jpg");
 app.productList.addProduct("wine-glass", "img/wine-glass.jpg");
-
 
 // Display the initial set of products
 app.displayRandomProducts();
