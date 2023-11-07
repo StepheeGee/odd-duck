@@ -4,7 +4,7 @@
 
 ## Odd-Ducks
 
-I've created a dynamic webpage for Pat's cookies. A large component of this assignment required me to write JS code to establish a class to model store locations, generates sales data for each location, dynamically builds an HTML table with the specified header and footer, and populates the table with the sales data rows for each store. And now it features a revolving photo carousel. And I recently added a form that accepts location properties as input. 
+The code creates an interactive voting system where users can click on their preferred product, and it tracks the number of clicks and displays the results once the session ends (after 25 clicks).
 
 ### Author: Stephanie G Johnson
 
@@ -14,19 +14,15 @@ I've created a dynamic webpage for Pat's cookies. A large component of this assi
 
 [DOMContentLoaded event](https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event)
 
-[SOLID](https://www.geeksforgeeks.org/single-responsibility-in-solid-design-principle/)
-
 [Working with Objects](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects)
 
-[HTML table w/ JS and DOM Interface](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Traversing_an_HTML_table_with_JavaScript_and_DOM_Interfaces#creating_an_html_table_dynamically)
 
-[Carousel](https://css-tricks.com/css-only-carousel/)
 
-[submission PR](https://stepheegee.github.io/cookie-stand/)
+[submission PR](https://stepheegee.github.io/odd-duck)
 
 
 ### Lighthouse Accessibility Report Score
-![Lighthouse](photos/lighthouse10.png)
+![Lighthouse]()
 
 
 
