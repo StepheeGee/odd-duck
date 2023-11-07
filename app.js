@@ -7,7 +7,7 @@ class App {
       clicksAllowed: 25,
       currentRound: 0,
     };
-    this.products = []; // An empty array to hold all product objects
+    this.products = []; 
     this.displayedProducts = [];
     this.productDisplayClickHandler = this.productDisplayClickHandler.bind(this); 
 
@@ -117,7 +117,7 @@ class App {
 
 const app = new App();
 
-// Add products to the product list
+
 app.addProduct("bag", "img/bag.jpg");
 app.addProduct("banana", "img/banana.jpg");
 app.addProduct("bathroom", "img/bathroom.jpg");
