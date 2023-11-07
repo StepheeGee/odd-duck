@@ -70,4 +70,4 @@
 
 1. Attach event listeners for clicks on displayed products using the `attachProductClickListeners` method.
 
-By following these steps, you'll build an interactive voting application that displays and tracks products, handles user votes, and provides voting results at the end of the session.
+
