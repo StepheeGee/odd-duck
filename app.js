@@ -94,7 +94,7 @@ class App {
         this.displayRandomProducts();
       }
     } else {
-      console.log('Voting session ended.');
+      alert('Voting session ended.');
       const productDisplay = document.getElementById('productDisplay');
       productDisplay.removeEventListener('click', this.productDisplayClickHandler);
       const viewResultsButton = document.getElementById('viewResultsButton');
