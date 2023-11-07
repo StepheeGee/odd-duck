@@ -7,13 +7,14 @@ class App {
       clicksAllowed: 25,
       currentRound: 0,
     };
-    this.products = []; // An array to hold all product objects
+    this.products = []; // An empty array to hold all product objects
     this.displayedProducts = [];
-    this.productDisplayClickHandler = this.productDisplayClickHandler.bind(this);
+    this.productDisplayClickHandler = this.productDisplayClickHandler.bind(this); 
+
 
     const viewResultsButton = document.getElementById('viewResultsButton');
     viewResultsButton.style.display = 'none';
-    viewResultsButton.addEventListener('click', this.displayResults.bind(this));
+    viewResultsButton.addEventListener('click', this.displayResults.bind(this)); 
   }
 
   // Method to add a product to the products array
@@ -22,7 +23,7 @@ class App {
       name,
       fileName,
       timesShown: 0,
-      timesClicked: 0
+      timesClicked: 0,
     };
     this.products.push(product);
   }
@@ -63,6 +64,7 @@ class App {
       const productImage = document.createElement('img');
       productImage.src = product.fileName;
       productImage.alt = product.name;
+      productImage.classList.add('image-shadow');
       productDisplay.appendChild(productImage);
     }
 
