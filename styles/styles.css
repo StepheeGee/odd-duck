@@ -12,6 +12,10 @@ header{
 header h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);}
 
+body{
+  background-color: #d1d2de;
+}
+
 p{
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: gray;
@@ -33,7 +37,7 @@ p{
 .image-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px; 
+  gap: 30px; 
   margin: 40px;
 }
 
@@ -44,7 +48,7 @@ p{
 }
 
 .image-shadow {
-  box-shadow: 5px 5px 5px #888888; 
+  box-shadow: 7px 5px 5px #6b6b6b; 
 }
 
 body {
