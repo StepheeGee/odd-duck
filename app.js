@@ -152,7 +152,7 @@ class App {
         label: 'Views',
         data: views,
         borderColor: 'blue',
-        backgroundColor: 'lightblue',
+        backgroundColor: 'blue',
         borderWidth: 2
       }]
       },
