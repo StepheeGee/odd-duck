@@ -13,9 +13,35 @@ class App {
 
     const viewResultsButton = document.getElementById('viewResultsButton');
     viewResultsButton.style.display = 'none';
-    viewResultsButton.addEventListener('click', function() {
+    viewResultsButton.addEventListener('click', function () {
       this.displayResults();
     }.bind(this));
+
+    
+    this.retrieveProductsFromLocalStorage();
+
+    if (this.products.length === 0) {
+      
+      this.addProduct("bag", "img/bag.jpg");
+      this.addProduct("banana", "img/banana.jpg");
+      this.addProduct("bathroom", "img/bathroom.jpg");
+      this.addProduct("boots", "img/boots.jpg");
+      this.addProduct("breakfast", "img/breakfast.jpg");
+      this.addProduct("bubblegum", "img/bubblegum.jpg");
+      this.addProduct("chair", "img/chair.jpg");
+      this.addProduct("cthulhu", "img/cthulhu.jpg");
+      this.addProduct("dog-duck", "img/dog-duck.jpg");
+      this.addProduct("dragon", "img/dragon.jpg");
+      this.addProduct("pen", "img/pen.jpg");
+      this.addProduct("pet-sweep", "img/pet-sweep.jpg");
+      this.addProduct("scissors", "img/scissors.jpg");
+      this.addProduct("shark", "img/shark.jpg");
+      this.addProduct("sweep", "img/sweep.png");
+      this.addProduct("tauntaun", "img/tauntaun.jpg");
+      this.addProduct("unicorn", "img/unicorn.jpg");
+      this.addProduct("water-can", "img/water-can.jpg");
+      this.addProduct("wine-glass", "img/wine-glass.jpg");
+    }
   }
 
   addProduct(name, fileName) {
@@ -26,6 +52,8 @@ class App {
       timesClicked: 0,
     };
     this.products.push(product);
+    
+    this.saveProductsToLocalStorage();
   }
 
   displayRandomProducts() {
@@ -100,10 +128,12 @@ class App {
 
     const labels = [];
     const votes = [];
+    const views = [];
 
     for (const product of this.products) {
       labels.push(product.name);
       votes.push(product.timesClicked);
+      views.push(product.timesShown);
     }
 
     const ctx = document.getElementById('resultsChart').getContext('2d');
@@ -114,10 +144,17 @@ class App {
         datasets: [{
           label: 'Votes',
           data: votes,
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'yellow',
+          borderColor: 'yellow',
           borderWidth: 1
-        }]
+        },
+      { 
+        label: 'Views',
+        data: views,
+        borderColor: 'blue',
+        backgroundColor: 'lightblue',
+        borderWidth: 2
+      }]
       },
       options: {
         scales: {
@@ -128,31 +165,21 @@ class App {
       }
     });
   }
+
+  saveProductsToLocalStorage() {
+    localStorage.setItem('products', JSON.stringify(this.products));
+  }
+
+  retrieveProductsFromLocalStorage() {
+    const storedProducts = localStorage.getItem('products');
+    if (storedProducts) {
+      this.products = JSON.parse(storedProducts);
+    }
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   const app = new App();
-
-  // Add your product data here
-  app.addProduct("bag", "img/bag.jpg");
-  app.addProduct("banana", "img/banana.jpg");
-  app.addProduct("bathroom", "img/bathroom.jpg");
-  app.addProduct("boots", "img/boots.jpg");
-  app.addProduct("breakfast", "img/breakfast.jpg");
-  app.addProduct("bubblegum", "img/bubblegum.jpg");
-  app.addProduct("chair", "img/chair.jpg");
-  app.addProduct("cthulhu", "img/cthulhu.jpg");
-  app.addProduct("dog-duck", "img/dog-duck.jpg");
-  app.addProduct("dragon", "img/dragon.jpg");
-  app.addProduct("pen", "img/pen.jpg");
-  app.addProduct("pet-sweep", "img/pet-sweep.jpg");
-  app.addProduct("scissors", "img/scissors.jpg");
-  app.addProduct("shark", "img/shark.jpg");
-  app.addProduct("sweep", "img/sweep.png");
-  app.addProduct("tauntaun", "img/tauntaun.jpg");
-  app.addProduct("unicorn", "img/unicorn.jpg");
-  app.addProduct("water-can", "img/water-can.jpg");
-  app.addProduct("wine-glass", "img/wine-glass.jpg");
 
   app.displayRandomProducts();
 });

@@ -5,7 +5,7 @@ body {
     "header"
     "main"
     "footer";
-  grid-template-rows: auto auto 1fr auto; /* Added an extra row for "Click a product" */
+  grid-template-rows: auto auto 1fr auto; 
   grid-template-columns: 1fr;
   grid-gap: 10px;
   min-height: 100vh;
@@ -31,13 +31,22 @@ main {
   justify-items: center;
 }
 
-p {
+h3 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(102, 104, 110);
-  text-shadow: 1px 0px 1px rgb(31, 28, 28);
-  font-size: 25px;
+  text-shadow: 1px 0px 1px rgb(121, 116, 116);
+  font-size: 30px;
   text-align: center;
-  margin: 45px;
+  margin: 35px;
+}
+
+p {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgb(59, 65, 80);
+  font-size: 15px;
+  text-align: center;
+  margin: 30px 150px;
+  font-style: italic;
 }
 
 #viewResultsButton {
@@ -65,7 +74,7 @@ p {
 }
 
 .image-shadow {
-  box-shadow: 7px 5px 5px #6b6b6b;
+  box-shadow: 10px 5px 5px #515050;
 }
 
 
@@ -82,5 +91,10 @@ footer {
 }
 
 .results-wrapper {
-  padding-bottom: 50px; 
+  padding-top: 40px;
+  padding-bottom: 10px; 
+  width: 500px; 
+  height: 100%; 
+  margin: 20px auto;
 }
+
