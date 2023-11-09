@@ -1,6 +1,6 @@
-# LAB - Class 12
+# LAB - Class 13
 
-11.7.23
+11.8.23
 
 ## Odd-Ducks
 
@@ -28,7 +28,7 @@ The code creates an interactive voting system where users can click on their pre
 
 
 ### Lighthouse Accessibility Report Score
-![Lighthouse](img/lighthouse12.png)
+![Lighthouse](img/lighthouse13.png)
 
 
 
@@ -36,21 +36,19 @@ The code creates an interactive voting system where users can click on their pre
 
 How did this go, overall?
 
-I had some serious difficulties getting my chart to display. First, the closing tag was not present when I inspected my console, and that was only remedied when I added some dummy content betwee the canvas tags. Then my console kept producing a module error. Thanksfully, my classmate Ekow took a look at it and determined that if I change the type to module in my app.js file, the error would resolve. And it did. 
+Well, first of all, I didn't add the views to my chart. I had to add the views as an object, inside of an array, to my chart. I changed the size of my chart- actually the size of the container so that it would be more clearly viewed and not take away from the rest of the webpage. I changed the colors of the bar chart to match the pallette. 
 
-I also had trouble adjusting the function for the random products shown (without repeats). But I finally got that to work. I was trying to call the function outside of the constructor and that's why it wasn't working. 
+I also added JSON for my local storage, which is how I discovered that I didn't factor in the views in my chart. I used stringify to change my objects (the products/images) into strings, when stored. 
 
-I also had to wrap the results in a results wrapper div because I couldn't find a way to add enough margin between the footer and chart so that the bottom of the chart would be visible above the footer. I had to add padding to the results outermost container - the results wrapper. 
+I also changed some of the margins in my CSS and shading. 
+
+**Set it - Stringify - Store it - Retrieve it - Parse it**
+
 
 What observations or questions do you have about what you’ve learned so far?
 
-I tried to create a legend and change the color of my bar chart in JS, but it was way too complicated. Every time I made an adjustment, my product display would disappear. So I'd like to know how to accomplish that. 
-
-Also, the console was my best friend today. Because it helped me solve my error codes. 
+I don't understand the purpose of JSON other than changing the syntax of Javascript so it can be changed in local storage. 
 
 How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?
 
-Oh, once our instructor informed us that we would have to solve the logic to randomize the product display without repetition, I knew it was going to take me quite a while. And it did. It took me 5.5 hours because I had to take a break to have a meeting with my team. 
-
-
-
+It took me about 4.5 hours to do this assignment. I thought it would take much longer based on my previous labs. But I'm grateful. 
