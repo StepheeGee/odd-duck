@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,28 +10,32 @@
 
   <title>Odd Ducks</title>
 </head>
+
 <body>
   <header>
-    <h1>Welcome to Odd Duck Products</h1>  
+    <h1>Welcome to Odd Duck Products</h1>
+
   </header>
 
   <main>
-    <h3>Click a product</h3>
-    <p class="directions">Directions: Click on the image you like the most. The images will then be shuffled. Continue by selecting your next favorite images. After 25 rounds, the results will be shown.</p>
+    <p class="directions">Directions: Click on the image you like the most. The images will then be shuffled and new images will be displayed. Continue by selecting your next favorite image. After 25 rounds, click the green button
+      to display the results.</p>
+    <h3>Click a Product</h3>
+   
     <div id="productDisplay" class="image-grid"></div>
   </main>
 
   <button id="viewResultsButton" style="display: none">View Results</button>
   <div class="results-wrapper">
-  <section id="resultsContainer">
-    <canvas id="resultsChart" >oh no</canvas>
-  </section>
-</div>
+    <section id="resultsContainer">
+      <canvas id="resultsChart">oh no</canvas>
+    </section>
+  </div>
   <footer>Be Kind &copy 2023</footer>
-  
+
 
   <script src="app.js" type="module"></script>
 
 </body>
-</html>
 
+</html>

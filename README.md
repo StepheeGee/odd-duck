@@ -1,10 +1,10 @@
-# LAB - Class 13
+# LAB - Class 15
 
-11.8.23
+11.10.23
 
 ## Odd-Ducks
 
-The code creates an interactive voting system where users can click on their preferred product, and it tracks the number of clicks and displays the results once the session ends (after 25 clicks).
+The code creates an interactive voting system where users can click on their preferred product, and it tracks the number of clicks and displays the results in a chart, once the session ends (after 25 clicks). This project focuses on random product selection, limited rounds of product interaction, and results visualization, displayed with a dynamic interface. 
 
 ### Author: Stephanie G Johnson
 
@@ -24,11 +24,11 @@ The code creates an interactive voting system where users can click on their pre
 
 
 
-### [Submission PR](https://stepheegee.github.io/odd-duck)
+### [Submission](https://stepheegee.github.io/odd-duck)
 
 
 ### Lighthouse Accessibility Report Score
-![Lighthouse](img/lighthouse13.png)
+![Lighthouse](img/lighthouse15.png)
 
 
 
@@ -36,19 +36,16 @@ The code creates an interactive voting system where users can click on their pre
 
 How did this go, overall?
 
-Well, first of all, I didn't add the views to my chart. I had to add the views as an object, inside of an array, to my chart. I changed the size of my chart- actually the size of the container so that it would be more clearly viewed and not take away from the rest of the webpage. I changed the colors of the bar chart to match the pallette. 
+This required a lot of reading and learning new ways of doing things in JavaScript. I finally got my logic to work so that the photos aren't duplicated in the current or previous display. I used a built in JavaScript object called Set. And made store new Set in the variable randomIndices. Then I made a while loop that checked for three unique photos to display. And made a recursive call to the function to try again from the beginning to make sure. 
 
-I also added JSON for my local storage, which is how I discovered that I didn't factor in the views in my chart. I used stringify to change my objects (the products/images) into strings, when stored. 
+It was challenging. 
 
-I also changed some of the margins in my CSS and shading. 
-
-**Set it - Stringify - Store it - Retrieve it - Parse it**
-
+I made sure that my local storage was working properly and that my CSS was cleaned up. 
 
 What observations or questions do you have about what you’ve learned so far?
 
-I don't understand the purpose of JSON other than changing the syntax of Javascript so it can be changed in local storage. 
+I wanted to use the .index method to check for duplicates, but I didn't know how to use it. So that's why I decided on this route. I'm interested in knowing how that method works. 
 
 How long did it take you to complete this assignment? And, before you started, how long did you think it would take you to complete this assignment?
 
-It took me about 4.5 hours to do this assignment. I thought it would take much longer based on my previous labs. But I'm grateful. 
+I worked on this for five and a half hours today. I knew it would take me quite a while, which is why I decided against taking "off" today. 

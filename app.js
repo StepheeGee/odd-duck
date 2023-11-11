@@ -17,11 +17,9 @@ class App {
       this.displayResults();
     }.bind(this));
 
-    
     this.retrieveProductsFromLocalStorage();
 
     if (this.products.length === 0) {
-      
       this.addProduct("bag", "img/bag.jpg");
       this.addProduct("banana", "img/banana.jpg");
       this.addProduct("bathroom", "img/bathroom.jpg");
@@ -52,7 +50,7 @@ class App {
       timesClicked: 0,
     };
     this.products.push(product);
-    
+
     this.saveProductsToLocalStorage();
   }
 
@@ -69,27 +67,32 @@ class App {
 
     this.displayedProducts = [];
 
-    const randomIndices = [];
-    while (randomIndices.length < 3) {
+    const randomIndices = new Set();
+
+    while (randomIndices.size < 3) {
       const randomIndex = Math.floor(Math.random() * this.products.length);
-      if (!randomIndices.includes(randomIndex)) {
-        randomIndices.push(randomIndex);
-      }
+      randomIndices.add(randomIndex);
     }
 
-    const productDisplay = document.getElementById('productDisplay');
-    productDisplay.innerHTML = '';
+    // Check for duplicates using Set
+    if (randomIndices.size < 3) {
+      this.displayRandomProducts();
+      return;
+    }
 
     for (const index of randomIndices) {
       this.displayedProducts.push(this.products[index]);
     }
 
+    const productDisplay = document.getElementById('productDisplay');
+    productDisplay.innerHTML = '';
+
     for (const product of this.displayedProducts) {
       const productLink = document.createElement('a');
       productLink.href = '#';
-      productLink.addEventListener('click', (event) => {
+      productLink.addEventListener('click', function (event) {
         this.productDisplayClickHandler(event);
-      });
+      }.bind(this));
 
       const productImage = document.createElement('img');
       productImage.src = product.fileName;
@@ -148,13 +151,13 @@ class App {
           borderColor: 'yellow',
           borderWidth: 1
         },
-      { 
-        label: 'Views',
-        data: views,
-        borderColor: 'blue',
-        backgroundColor: 'blue',
-        borderWidth: 2
-      }]
+        { 
+          label: 'Views',
+          data: views,
+          borderColor: 'blue',
+          backgroundColor: 'blue',
+          borderWidth: 2
+        }]
       },
       options: {
         scales: {
